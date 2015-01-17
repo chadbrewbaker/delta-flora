@@ -574,7 +574,7 @@ def chart names, values
   `open temp.csv`
 end
 
-# :: [String] -> [String] -> Int
+# :: String -> String -> Int
 def compression_distance a, b
     a_compressed = Zlib::Deflate.deflate(a)
     b_compressed = Zlib::Deflate.deflate(b)
