@@ -574,6 +574,7 @@ def chart names, values
   `open temp.csv`
 end
 
+#Cilibrasi, R., & Vitányi, P. M. (2005). Clustering by compression. Information Theory,IEEE Transactions on, 51(4), 1523-1545.
 # :: String -> String -> Int
 def compression_distance a, b
     a_compressed = Zlib::Deflate.deflate(a)
@@ -581,3 +582,13 @@ def compression_distance a, b
     both_compressed = Zlib::Deflate.deflate(a + b)
     both_compressed.length - [a_compressed.length, b_compressed.length].min
 end
+
+# :: String -> String -> Float
+def normalized_compression_distance a, b
+    a_compressed = Zlib::Deflate.deflate(a)
+    b_compressed = Zlib::Deflate.deflate(b)
+    both_compressed = Zlib::Deflate.deflate(a + b)
+    (both_compressed.length - a_compressed.length) / (b_compressed.length * 1.0)
+end
+
+
